@@ -1,0 +1,108 @@
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+
+</head>
+
+<body>
+
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="row">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text">Monkey</li>
+                    <li> <%= link_to "Home", root_path %> </li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                      <li><%=link_to "Your Cart", carts_path %></li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <li>
+                        <input type="search" placeholder="Search">
+                    </li>
+                    <li>
+                        <button type="button" class="button">Search</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+    <br>
+    <!-- You can now combine a row and column if you just need a 12 column row -->
+  <%= link_to "NEW" , new_product_path(@product), class:"btn btn-primary" %>
+    <div class="row medium-up-3 large-up-5">
+
+      <% @products.each do |product| %>
+              <div class="column">
+
+                <div class="thumbnail">
+                      <%=image_tag product.image %>
+                  </div>
+
+                  <h3 class="h3-big"><%= product.title %></h3>
+                  <h5 class="h5-big"><%= product.price %></h5>
+
+                  <div class="content2">
+                      <%= link_to edit_product_path(product), class:"btn btn-primary" do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
+                      <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure want delete?" }, class:"btn btn-primary" do %>
+                        <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                      <% end %>
+                      <%= link_to add_product_path(id: product, quantity: 1), method: :post do %>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      <% end %>
+                  </div>
+              </div>
+              <% end %>
+
+
+
+
+
+
+        <div class="column">
+            <img class="thumbnail" src="http://dummyimage.com/350x450/000/fff">
+            <h5>Other Product <small>$22</small></h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+        </div>
+        <div class="column">
+            <img class="thumbnail" src="http://dummyimage.com/350x450/000/fff">
+            <h5>Other Product <small>$22</small></h5>
+            <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+            <a href="#" class="button hollow tiny expanded">Buy Now</a>
+        </div>
+
+
+    </div>
+
+    <div class="row column">
+        <hr>
+        <ul class="menu">
+            <li class="menu-text">Monkey</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="float-right">Copyright 2016</li>
+        </ul>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+
+</html>
